@@ -1,9 +1,11 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
-import dotenv from 'dotenv';
 import { connectDatabase } from './config/database';
 import { initSocketService } from './services/socket.service';
 import authRoutes from './routes/auth';
@@ -20,8 +22,6 @@ import postRoutes from './routes/posts';
 import adminRoutes from './routes/admin';
 import emergencyRoutes from './routes/emergency';
 import achievementRoutes from './routes/achievements';
-
-dotenv.config();
 
 const app = express();
 const server = http.createServer(app);

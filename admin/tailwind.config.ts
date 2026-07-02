@@ -14,6 +14,7 @@ const config: Config = {
       colors: {
         primary: { DEFAULT: '#FF6B00', foreground: '#ffffff' },
         background: '#0A0A0A',
+        foreground: '#ffffff',
         surface: '#141414',
         card: { DEFAULT: 'rgba(255,255,255,0.05)', foreground: '#ffffff' },
         muted: { DEFAULT: '#1A1A1A', foreground: '#9B9B9B' },

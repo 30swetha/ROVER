@@ -40,7 +40,6 @@ const UserSchema = new Schema<IUser>({
   following: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 }, { timestamps: true });
 
-UserSchema.index({ phone: 1 });
 UserSchema.index({ role: 1 });
 UserSchema.index({ city: 1 });
 
