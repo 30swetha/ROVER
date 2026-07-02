@@ -75,7 +75,6 @@ const RiderProfileSchema = new Schema<IRiderProfile>({
   avgResponseTime: { type: Number, default: 0 },
 }, { timestamps: true });
 
-RiderProfileSchema.index({ userId: 1 });
 RiderProfileSchema.index({ verificationStatus: 1 });
 RiderProfileSchema.index({ rating: -1 });
 RiderProfileSchema.index({ completedTrips: -1 });

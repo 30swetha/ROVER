@@ -58,7 +58,7 @@ export const verifyOTP = async (req: Request, res: Response): Promise<void> => {
     const token = jwt.sign(
       { id: user._id.toString(), role: user.role, phone: user.phone },
       process.env.JWT_SECRET!,
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' },
+      { expiresIn: (process.env.JWT_EXPIRES_IN || '7d') as any },
     );
 
     res.json({ token, user, isNew });
@@ -75,7 +75,7 @@ export const refreshToken = async (req: AuthRequest, res: Response): Promise<voi
   const token = jwt.sign(
     { id: user._id.toString(), role: user.role, phone: user.phone },
     process.env.JWT_SECRET!,
-    { expiresIn: process.env.JWT_EXPIRES_IN || '7d' },
+    { expiresIn: (process.env.JWT_EXPIRES_IN || '7d') as any },
   );
   res.json({ token });
 };
@@ -130,7 +130,7 @@ export const adminLogin = async (req: Request, res: Response): Promise<void> => 
     const token = jwt.sign(
       { id: adminUser._id.toString(), role: adminUser.role, phone: adminUser.phone },
       process.env.JWT_SECRET!,
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' },
+      { expiresIn: (process.env.JWT_EXPIRES_IN || '7d') as any },
     );
 
     res.json({ token, user: adminUser });

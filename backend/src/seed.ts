@@ -47,25 +47,25 @@ async function seed() {
 
   // Create owners
   const owners = await User.insertMany([
-    { name: 'Priya Sharma', phone: '9876543210', role: 'owner', city: 'Mumbai', verified: true, trustScore: 82 },
-    { name: 'Rahul Mehta', phone: '9876543211', role: 'owner', city: 'Bangalore', verified: true, trustScore: 75 },
-    { name: 'Kavitha Nair', phone: '9876543212', role: 'owner', city: 'Chennai', verified: true, trustScore: 68 },
-    { name: 'Arjun Singh', phone: '9876543213', role: 'owner', city: 'Delhi', verified: true, trustScore: 90 },
-    { name: 'Sneha Patel', phone: '9876543214', role: 'owner', city: 'Pune', verified: true, trustScore: 71 },
+    { name: 'Priya Sharma', phone: '9876543210', email: 'priya@rover.com', role: 'owner', city: 'Mumbai', verified: true, trustScore: 82 },
+    { name: 'Rahul Mehta', phone: '9876543211', email: 'rahul@rover.com', role: 'owner', city: 'Bangalore', verified: true, trustScore: 75 },
+    { name: 'Kavitha Nair', phone: '9876543212', email: 'kavitha@rover.com', role: 'owner', city: 'Chennai', verified: true, trustScore: 68 },
+    { name: 'Arjun Singh', phone: '9876543213', email: 'arjun@rover.com', role: 'owner', city: 'Delhi', verified: true, trustScore: 90 },
+    { name: 'Sneha Patel', phone: '9876543214', email: 'sneha@rover.com', role: 'owner', city: 'Pune', verified: true, trustScore: 71 },
   ]);
 
   // Create riders
   const riderUsers = await User.insertMany([
-    { name: 'Vikram Rathore', phone: '9876543220', role: 'rider', city: 'Mumbai', verified: true, trustScore: 94, xp: 4200, badges: ['verified_rider', 'fifty_trips', 'top_rated'] },
-    { name: 'Dev Kumar', phone: '9876543221', role: 'rider', city: 'Bangalore', verified: true, trustScore: 88, xp: 3100, badges: ['verified_rider', 'ten_trips'] },
-    { name: 'Sanjay Desai', phone: '9876543222', role: 'rider', city: 'Pune', verified: true, trustScore: 76, xp: 1800, badges: ['verified_rider', 'first_ride'] },
-    { name: 'Karthik Menon', phone: '9876543223', role: 'rider', city: 'Chennai', verified: true, trustScore: 91, xp: 5500, badges: ['verified_rider', 'hundred_trips', 'five_star_streak'] },
-    { name: 'Rohit Yadav', phone: '9876543224', role: 'rider', city: 'Hyderabad', verified: true, trustScore: 83, xp: 2900, badges: ['verified_rider', 'ten_trips'] },
-    { name: 'Aryan Kapoor', phone: '9876543225', role: 'rider', city: 'Delhi', verified: true, trustScore: 79, xp: 2200, badges: ['verified_rider', 'ten_trips'] },
-    { name: 'Suresh Pillai', phone: '9876543226', role: 'rider', city: 'Kochi', verified: true, trustScore: 86, xp: 3400, badges: ['verified_rider', 'fifty_trips'] },
-    { name: 'Naveen Sharma', phone: '9876543227', role: 'rider', city: 'Jaipur', verified: true, trustScore: 72, xp: 1500, badges: ['verified_rider', 'first_ride'] },
-    { name: 'Prakash Rao', phone: '9876543228', role: 'rider', city: 'Ahmedabad', verified: true, trustScore: 89, xp: 4800, badges: ['verified_rider', 'fifty_trips', 'top_rated'] },
-    { name: 'Ankit Verma', phone: '9876543229', role: 'rider', city: 'Lucknow', verified: true, trustScore: 65, xp: 900, badges: ['verified_rider'] },
+    { name: 'Vikram Rathore', phone: '9876543220', email: 'vikram@rover.com', role: 'rider', city: 'Mumbai', verified: true, trustScore: 94, xp: 4200, badges: ['verified_rider', 'fifty_trips', 'top_rated'] },
+    { name: 'Dev Kumar', phone: '9876543221', email: 'dev@rover.com', role: 'rider', city: 'Bangalore', verified: true, trustScore: 88, xp: 3100, badges: ['verified_rider', 'ten_trips'] },
+    { name: 'Sanjay Desai', phone: '9876543222', email: 'sanjay@rover.com', role: 'rider', city: 'Pune', verified: true, trustScore: 76, xp: 1800, badges: ['verified_rider', 'first_ride'] },
+    { name: 'Karthik Menon', phone: '9876543223', email: 'karthik@rover.com', role: 'rider', city: 'Chennai', verified: true, trustScore: 91, xp: 5500, badges: ['verified_rider', 'hundred_trips', 'five_star_streak'] },
+    { name: 'Rohit Yadav', phone: '9876543224', email: 'rohit@rover.com', role: 'rider', city: 'Hyderabad', verified: true, trustScore: 83, xp: 2900, badges: ['verified_rider', 'ten_trips'] },
+    { name: 'Aryan Kapoor', phone: '9876543225', email: 'aryan@rover.com', role: 'rider', city: 'Delhi', verified: true, trustScore: 79, xp: 2200, badges: ['verified_rider', 'ten_trips'] },
+    { name: 'Suresh Pillai', phone: '9876543226', email: 'suresh@rover.com', role: 'rider', city: 'Kochi', verified: true, trustScore: 86, xp: 3400, badges: ['verified_rider', 'fifty_trips'] },
+    { name: 'Naveen Sharma', phone: '9876543227', email: 'naveen@rover.com', role: 'rider', city: 'Jaipur', verified: true, trustScore: 72, xp: 1500, badges: ['verified_rider', 'first_ride'] },
+    { name: 'Prakash Rao', phone: '9876543228', email: 'prakash@rover.com', role: 'rider', city: 'Ahmedabad', verified: true, trustScore: 89, xp: 4800, badges: ['verified_rider', 'fifty_trips', 'top_rated'] },
+    { name: 'Ankit Verma', phone: '9876543229', email: 'ankit@rover.com', role: 'rider', city: 'Lucknow', verified: true, trustScore: 65, xp: 900, badges: ['verified_rider'] },
   ]);
 
   // Create rider profiles
