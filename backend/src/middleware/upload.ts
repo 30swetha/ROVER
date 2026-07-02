@@ -1,7 +1,6 @@
 import multer from 'multer';
 import { Request } from 'express';
 import { cloudinary } from '../config/cloudinary';
-import { v2 as cloudinaryV2 } from 'cloudinary';
 
 const storage = multer.memoryStorage();
 
@@ -24,13 +23,13 @@ export async function uploadToCloudinary(
   resourceType: 'image' | 'video' | 'auto' = 'image',
 ): Promise<string> {
   return new Promise((resolve, reject) => {
-    const uploadStream = cloudinaryV2.uploader.upload_stream(
-      { folder: `rover/${folder}`, resource_type: resourceType },
-      (error, result) => {
-        if (error) return reject(error);
+    const uploadStream = cloudinary.uploader.upload_stream(
+      (result: any) => {
         if (!result) return reject(new Error('Upload failed'));
+        if (result.error) return reject(result.error);
         resolve(result.secure_url);
       },
+      { folder: `rover/${folder}`, resource_type: resourceType },
     );
     uploadStream.end(buffer);
   });

@@ -133,3 +133,54 @@ export const completeProfile = async (
 
   res.json({ user });
 };
+
+export const adminLogin = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(400).json({ errors: errors.array() });
+    return;
+  }
+
+  const { email, password } = req.body;
+  const envEmail = process.env.ADMIN_EMAIL || 'admin@rover.com';
+  const envPassword = process.env.ADMIN_PASSWORD || 'adminrover123';
+
+  if (email !== envEmail || password !== envPassword) {
+    res.status(401).json({ error: 'Invalid admin credentials' });
+    return;
+  }
+
+  try {
+    let adminUser = await User.findOne({ role: 'admin' });
+    if (!adminUser) {
+      adminUser = await User.create({
+        name: 'ROVER Admin',
+        phone: '9999999999',
+        email: envEmail,
+        role: 'admin',
+        verified: true,
+        trustScore: 100,
+      });
+    }
+
+    const token = jwt.sign(
+      {
+        id: adminUser._id.toString(),
+        role: adminUser.role,
+        phone: adminUser.phone,
+      },
+      process.env.JWT_SECRET as string,
+      {
+        expiresIn: (process.env.JWT_EXPIRES_IN || '7d') as jwt.SignOptions['expiresIn'],
+      }
+    );
+
+    res.json({ token, user: adminUser });
+  } catch (err: any) {
+    console.error('Admin login error:', err);
+    res.status(500).json({ error: 'Internal server error', message: err.message });
+  }
+};
