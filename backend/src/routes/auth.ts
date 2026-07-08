@@ -12,9 +12,14 @@ router.post('/send-otp',
 
 router.post('/verify-otp',
   body('phone').matches(/^[6-9]\d{9}$/),
-  body('otp').isLength({ min: 6, max: 6 }),
   body('firebaseToken').notEmpty(),
   AuthController.verifyOTP,
+);
+
+router.post('/admin-login',
+  body('email').isEmail().normalizeEmail(),
+  body('password').notEmpty(),
+  AuthController.adminLogin,
 );
 
 router.post('/refresh-token', authenticate, AuthController.refreshToken);
